@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Before Tax App</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f9;
+        }
+        .app-container {
+            width: 90%;
+            max-width: 400px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 1.8rem;
+            color: #333;
+            text-align: center;
+        }
+        label {
+            font-size: 1rem;
+            color: #555;
+            margin-bottom: 8px;
+            display: block;
+        }
+        input, button {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .result {
+            font-size: 1.2rem;
+            color: #333;
+            margin-top: 15px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <h1>Tax Calculator App</h1>
+        <label for="priceAfterTax">Enter Price After Tax:</label>
+        <input type="number" id="priceAfterTax" placeholder="Enter total price after tax">
+
+        <button onclick="calculatePrice()">Calculate</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function calculatePrice() {
+            const priceAfterTax = parseFloat(document.getElementById("priceAfterTax").value);
+            const taxRate = 18; // Fixed tax rate
+
+            if (isNaN(priceAfterTax)) {
+                document.getElementById("result").innerText = "Please provide a valid price.";
+                return;
+            }
+
+            const priceBeforeTax = priceAfterTax / (1 + taxRate / 100);
+            document.getElementById("result").innerText = 
+                `Price Before Tax: ₹${priceBeforeTax.toFixed(2)}`;
+        }
+    </script>
+</body>
+</html>
